@@ -3,7 +3,7 @@ const express = require('express');
 const multer = require('multer');
 const nanoid = require('nanoid');
 
-const Album = require('../model/schemaAlbum');
+const Album = require('../model/Album');
 
 const config = require('../config');
 

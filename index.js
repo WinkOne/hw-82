@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const Album = require('./app/Album');
-const Artist = require('./app/Artist');
-const Track = require('./app/Track');
+const album = require('./app/album');
+const artist = require('./app/artist');
+const track = require('./app/track');
+const users = require('./app/users');
+const trackHistory = require('./app/trackHistory');
 
 const config = require('./config');
 
@@ -18,12 +20,15 @@ app.use(express.static('public'));
 const run = async () => {
     await mongoose.connect('mongodb://localhost', {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex: true,
     });
 
-    app.use('/artist', Artist);
-    app.use('/album', Album);
-    app.use('/track', Track);
+    app.use('/artist', album);
+    app.use('/album', artist);
+    app.use('/track', track);
+    app.use('/users', users);
+    app.use('/track_history', trackHistory);
 
     app.listen(config.port, () => {
         console.log(`Server started on ${config.port} port!`)

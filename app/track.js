@@ -1,6 +1,6 @@
 const express = require('express');
 
-const Artist = require('../model/schemaTrack');
+const Artist = require('../model/Track');
 
 const router = express.Router();
 
